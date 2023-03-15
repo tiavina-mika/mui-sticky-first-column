@@ -16,5 +16,6 @@
   "main": "index.tsx",
   "scripts": {
     "start": "react-scripts start"
-  }
+  },
+  "engines": { "node": "14.17.x" }
 }
