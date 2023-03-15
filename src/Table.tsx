@@ -18,8 +18,7 @@ const random = (number = 1): number => Math.floor(Math.random() * 10 * number);
 const stickyStyle = {
   position: "sticky",
   left: 0,
-  boxShadow: "5px 2px 5px grey",
-  borderRight: "2px solid black"
+  borderRight: "1px solid black"
 };
 
 const firstColumnStyle = {
@@ -84,7 +83,7 @@ const headers = [
   { label: "Prix au kg (€)" },
   { label: "Foodcost (€)" },
   { label: "Transformation" },
-  { label: "Rendement" },
+  { label: "Rendement (%)" },
   { label: "Poids en sortie (g)" },
   { label: "Atelier" },
   { label: "Machine" },
@@ -99,14 +98,19 @@ const headers = [
 const StyledTableHeadCell = styled(TableCell, {
   shouldForwardProp: (prop) => prop !== "isFirstColumn"
 })((props) => {
-  let defaultStyles = {
+  let defaultStyles: Record<string, any> = {
     height: 40,
     backgroundColor: "#2196f3",
     color: "#fff"
   };
 
   if (props.isFirstColumn) {
-    defaultStyles = { ...defaultStyles, ...stickyStyle, ...firstColumnStyle };
+    defaultStyles = {
+      ...defaultStyles,
+      ...stickyStyle,
+      ...firstColumnStyle
+    };
+    defaultStyles.zIndex = 1000;
   }
 
   return defaultStyles;
@@ -125,6 +129,7 @@ const Table = () => {
         sx={{ minWidth: 2600 }}
         aria-label="recipe table"
         style={{ tableLayout: "fixed" }}
+        stickyHeader
       >
         <TableHead>
           <TableRow>
