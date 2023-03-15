@@ -6,6 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import styled from "@emotion/styled";
+import { grey } from "@mui/material/colors";
 
 // ----------------------------------------------- //
 // --------------------- utils ------------------- //
@@ -18,7 +19,7 @@ const random = (number = 1): number => Math.floor(Math.random() * 10 * number);
 const stickyStyle = {
   position: "sticky",
   left: 0,
-  borderRight: "1px solid black"
+  borderRight: "1px solid " + grey[300]
 };
 
 const firstColumnStyle = {
@@ -122,7 +123,7 @@ const Table = () => {
       style={{
         maxWidth: "100vw",
         maxHeight: "95vh",
-        border: "1px solid black"
+        border: "1px solid " + grey[300]
       }}
     >
       <MUITable
