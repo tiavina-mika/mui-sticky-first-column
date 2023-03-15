@@ -10,7 +10,7 @@ import styled from "@emotion/styled";
 // ----------------------------------------------- //
 // --------------------- utils ------------------- //
 // ----------------------------------------------- //
-const random = (number = 1) => Math.floor(Math.random() * 10 * number);
+const random = (number = 1): number => Math.floor(Math.random() * 10 * number);
 
 // ----------------------------------------------- //
 // --------------------- data -------------------- //
@@ -117,12 +117,12 @@ const Table = () => {
     <TableContainer
       style={{
         maxWidth: "100vw",
-        maxHeight: "100vh",
+        maxHeight: "95vh",
         border: "1px solid black"
       }}
     >
       <MUITable
-        sx={{ minWidth: 2000 }}
+        sx={{ minWidth: 2600 }}
         aria-label="recipe table"
         style={{ tableLayout: "fixed" }}
       >
