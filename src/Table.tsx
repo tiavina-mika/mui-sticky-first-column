@@ -1,11 +1,11 @@
-import MUITable from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import styled from '@emotion/styled';
+import MUITable from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import styled from "@emotion/styled";
 
 // ----------------------------------------------- //
 // --------------------- utils ------------------- //
@@ -19,17 +19,17 @@ const stickyStyle = {
   position: "sticky",
   left: 0,
   boxShadow: "5px 2px 5px grey",
-  borderRight: "2px solid black",
+  borderRight: "2px solid black"
 };
 
 const firstColumnStyle = {
-  width: 300,
+  width: 300
 };
 
 const sx = {
   sticky: stickyStyle,
-  firstColumn: firstColumnStyle,
-}
+  firstColumn: firstColumnStyle
+};
 
 const createData = (
   name: string,
@@ -43,7 +43,7 @@ const createData = (
   machineType: string,
   machineSetting: string,
   stepDurationValue: number,
-  stepDurationUnit: string,
+  stepDurationUnit: string
 ) => {
   return {
     name,
@@ -57,24 +57,24 @@ const createData = (
     machineType,
     machineSetting,
     stepDurationValue,
-    stepDurationUnit,
+    stepDurationUnit
   };
-}
+};
 
-const items = [...Array(10)].map((_, i) => {
+const items = [...Array(20)].map((_, i) => {
   return createData(
-    'name ' + i,
+    "name " + i,
     random(),
     random(),
     random(),
-    'transformation ' + i,
+    "transformation " + i,
     random(),
     random(),
-    'kitchenArea ' + i,
-    'machineType ' + i,
-    'machineSetting ' + i,
+    "kitchenArea " + i,
+    "machineType " + i,
+    "machineSetting " + i,
     random(),
-    'kg / heure',
+    "kg / heure"
   );
 });
 
@@ -90,7 +90,7 @@ const headers = [
   { label: "Machine" },
   { label: "Paramétrage machine" },
   { label: "Durée de l'étape (valeur)" },
-  { label: "Durée de l'étape (unité)" },
+  { label: "Durée de l'étape (unité)" }
 ];
 
 // ----------------------------------------------- //
@@ -100,7 +100,9 @@ const StyledTableHeadCell = styled(TableCell, {
   shouldForwardProp: (prop) => prop !== "isFirstColumn"
 })((props) => {
   let defaultStyles = {
-    height: 40, backgroundColor: '#2196f3', color: "#fff",
+    height: 40,
+    backgroundColor: "#2196f3",
+    color: "#fff"
   };
 
   if (props.isFirstColumn) {
@@ -108,29 +110,37 @@ const StyledTableHeadCell = styled(TableCell, {
   }
 
   return defaultStyles;
-})
+});
 
 const Table = () => {
   return (
-    <TableContainer style={{ maxWidth: '100vw', border: "1px solid black" }}>
+    <TableContainer
+      style={{
+        maxWidth: "100vw",
+        maxHeight: "100vh",
+        border: "1px solid black"
+      }}
+    >
       <MUITable
         sx={{ minWidth: 2000 }}
-        aria-label="simple table"
+        aria-label="recipe table"
         style={{ tableLayout: "fixed" }}
       >
         <TableHead>
-          <TableRow >
+          <TableRow>
             {headers.map((header, index) => (
               <StyledTableHeadCell
                 key={header.label + index}
-                align={index === 0 ? 'left' : 'center'}
+                align={index === 0 ? "left" : "center"}
                 isFirstColumn={index === 0}
               >
-                <Typography sx={{
-                  textAlign: index === 0 ? 'left' : 'center',
-                  fontWeight: 500,
-                  fontSize: '14px',
-                  lineHeight: '22px' }}
+                <Typography
+                  sx={{
+                    textAlign: index === 0 ? "left" : "center",
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    lineHeight: "22px"
+                  }}
                 >
                   {header.label}
                 </Typography>
@@ -142,7 +152,7 @@ const Table = () => {
           {items.map((row, index) => (
             <TableRow key={row.name + index}>
               <TableCell
-                sx={{ ...sx.sticky, backgroundColor: '#fff'}}
+                sx={{ ...sx.sticky, backgroundColor: "#fff" }}
                 component="th"
                 scope="row"
               >
@@ -165,5 +175,6 @@ const Table = () => {
       </MUITable>
     </TableContainer>
   );
-}
+};
+
 export default Table;
