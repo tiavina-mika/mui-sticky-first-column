@@ -93,12 +93,15 @@ const headers = [
   { label: "Durée de l'étape (unité)" }
 ];
 
+type StyledTableHeadCellProps = {
+  isFirstColumn: boolean;
+};
 // ----------------------------------------------- //
 // -------------- styled components -------------- //
 // ----------------------------------------------- //
 const StyledTableHeadCell = styled(TableCell, {
   shouldForwardProp: (prop) => prop !== "isFirstColumn"
-})((props) => {
+})<StyledTableHeadCellProps>((props) => {
   let defaultStyles: Record<string, any> = {
     height: 40,
     backgroundColor: "#2196f3",
