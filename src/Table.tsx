@@ -14,7 +14,7 @@ import { grey } from "@mui/material/colors";
 const random = (number = 1): number => Math.floor(Math.random() * 10 * number);
 
 // ----------------------------------------------- //
-// --------------------- data -------------------- //
+// -------------------- styles ------------------- //
 // ----------------------------------------------- //
 const stickyStyle = {
   position: "sticky",
@@ -61,7 +61,7 @@ const createData = (
   };
 };
 
-const items = [...Array(20)].map((_, i) => {
+const sections = [...Array(20)].map((_, i) => {
   return createData(
     "name " + i,
     random(),
@@ -96,6 +96,7 @@ const headers = [
 type StyledTableHeadCellProps = {
   isFirstColumn: boolean;
 };
+
 // ----------------------------------------------- //
 // -------------- styled components -------------- //
 // ----------------------------------------------- //
@@ -158,26 +159,26 @@ const Table = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {items.map((row, index) => (
-            <TableRow key={row.name + index}>
+          {sections.map((section, index) => (
+            <TableRow key={section.name + index}>
               <TableCell
                 sx={{ ...sx.sticky, backgroundColor: "#fff" }}
                 component="th"
                 scope="row"
               >
-                {row.name}
+                {section.name}
               </TableCell>
-              <TableCell align="center">{row.inputWeight}</TableCell>
-              <TableCell align="center">{row.pricePerKg}</TableCell>
-              <TableCell align="center">{row.foodcost}</TableCell>
-              <TableCell align="center">{row.transformation}</TableCell>
-              <TableCell align="center">{row.transformationRate}</TableCell>
-              <TableCell align="center">{row.outputWeight}</TableCell>
-              <TableCell align="center">{row.kitchenArea}</TableCell>
-              <TableCell align="center">{row.machineType}</TableCell>
-              <TableCell align="center">{row.machineSetting}</TableCell>
-              <TableCell align="center">{row.stepDurationValue}</TableCell>
-              <TableCell align="center">{row.stepDurationUnit}</TableCell>
+              <TableCell align="center">{section.inputWeight}</TableCell>
+              <TableCell align="center">{section.pricePerKg}</TableCell>
+              <TableCell align="center">{section.foodcost}</TableCell>
+              <TableCell align="center">{section.transformation}</TableCell>
+              <TableCell align="center">{section.transformationRate}</TableCell>
+              <TableCell align="center">{section.outputWeight}</TableCell>
+              <TableCell align="center">{section.kitchenArea}</TableCell>
+              <TableCell align="center">{section.machineType}</TableCell>
+              <TableCell align="center">{section.machineSetting}</TableCell>
+              <TableCell align="center">{section.stepDurationValue}</TableCell>
+              <TableCell align="center">{section.stepDurationUnit}</TableCell>
             </TableRow>
           ))}
         </TableBody>
